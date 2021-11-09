@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:focusable="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="97dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:src="@drawable/avatar"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:text="Designer"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="23dp"
+                android:layout_marginStart="88dp"
+                android:fontFamily="@font/inter_regular"
+                android:textColor="#55555C"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Алиса Иванова"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="#050510"
+                android:layout_marginStart="88dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="42dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginStart="213dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="42dp"
+                android:text="al"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="#97979B"/>
+        </FrameLayout>
+    </FrameLayout>
+</LinearLayout>

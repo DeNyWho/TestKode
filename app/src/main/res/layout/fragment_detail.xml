@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailFragment">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#F7F7F8"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="135.5dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="135.5dp"
+            android:layout_marginBottom="104dp"
+            android:src="@drawable/rectangle_7" />
+
+        <TextView
+            android:layout_width="184dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="168dp"
+            android:layout_marginEnd="105dp"
+            android:layout_marginBottom="52dp"
+            android:fontFamily="@font/inter"
+            android:gravity="center"
+            android:text="Алиса Иванова"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="274dp"
+            android:layout_marginTop="174dp"
+            android:layout_marginEnd="87dp"
+            android:layout_marginBottom="52dp"
+            android:fontFamily="@font/inter_regular"
+            android:gravity="center"
+            android:text="al"
+            android:textColor="#97979B"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="208dp"
+            android:layout_marginEnd="160dp"
+            android:layout_marginBottom="24dp"
+            android:text="Designer"
+            android:textColor="#55555C" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="368dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="337dp"
+            android:layout_marginTop="20dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vector"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="337dp"
+            android:layout_marginTop="88dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 июня 1996"
+            android:fontFamily="@font/inter_medium"
+            android:textSize="16sp"
+            android:layout_marginStart="52dp"
+            android:layout_marginEnd="225dp"
+            android:layout_marginTop="19dp"
+            android:textColor="#050510"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24 года"
+            android:textSize="16sp"
+            android:textColor="#97979B"
+            android:layout_marginStart="294dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="7 (999) 900 90 90"
+            android:textColor="#050510"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="87dp"
+            android:layout_marginEnd="172dp"/>
+
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
