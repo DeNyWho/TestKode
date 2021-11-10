@@ -1,14 +1,10 @@
 package com.example.testkode
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -16,7 +12,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.testkode.adapter.ListAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.fragment_main.*
 
 
 class MainFragment : Fragment() {

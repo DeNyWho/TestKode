@@ -1,21 +1,82 @@
 package com.example.testkode.fragments
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.testkode.R
+import com.example.testkode.adapter.UsersAdapter
+import com.example.testkode.network.NetworkService
+import com.example.testkode.response.User
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 class EveryOneFragment : Fragment() {
 
+    private var listUsers: MutableList<User> = mutableListOf<User>()
+    private var adapter: UsersAdapter? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if(isNetworkAvailable()) getUsersData()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_every_one, container, false)
+        val view = inflater.inflate(R.layout.fragment_every_one, container, false)
+        val recycler = view.findViewById<RecyclerView>(R.id.recycler_main)
+
+        listUsers = mutableListOf()
+
+        recycler.layoutManager = LinearLayoutManager(requireContext())
+        adapter = UsersAdapter(
+            requireContext(),
+            listUsers
+        )
+        adapter!!.notifyDataSetChanged()
+        recycler.adapter = adapter
+
+        return view
+    }
+
+    private fun getUsersData(){
+        NetworkService.apiService.getUsers().enqueue(object: Callback<MutableList<User>> {
+            override fun onFailure(call: Call<MutableList<User>>, t: Throwable) {
+                Log.e("error", t.localizedMessage)
+            }
+
+            override fun onResponse(
+                call: Call<MutableList<User>>,
+                response: Response<MutableList<User>>
+            ) {
+                val usersResponse = response.body()
+                listUsers.clear()
+                usersResponse?.let{ listUsers.addAll(it)}
+            }
+        })
+    }
+
+    private fun isNetworkAvailable(): Boolean{
+        var something = 0
+        fun Context.isNetworkAvailable(): Boolean {
+            val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+            val activeNetworkInfo = connectivityManager!!.activeNetworkInfo
+            something = if (activeNetworkInfo != null && activeNetworkInfo.isConnected) 1
+            else 0
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected
+        }
+        return something == 1
     }
 
 }

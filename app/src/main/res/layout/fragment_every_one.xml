@@ -7,8 +7,12 @@
     tools:context=".fragments.EveryOneFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ContactList"
+        android:id="@+id/recycler_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/list_item"/>
+        tools:listitem="@layout/user_row"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
