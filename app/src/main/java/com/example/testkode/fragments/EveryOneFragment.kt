@@ -3,7 +3,6 @@ package com.example.testkode.fragments
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testkode.R
 import com.example.testkode.adapter.UsersAdapter
-import com.example.testkode.network.NetworkService
-import com.example.testkode.response.User
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.testkode.models.User
 
 
 class EveryOneFragment : Fragment() {
@@ -26,8 +21,6 @@ class EveryOneFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if(isNetworkAvailable()) getUsersData()
     }
 
     override fun onCreateView(
@@ -48,23 +41,6 @@ class EveryOneFragment : Fragment() {
         recycler.adapter = adapter
 
         return view
-    }
-
-    private fun getUsersData(){
-        NetworkService.apiService.getUsers().enqueue(object: Callback<MutableList<User>> {
-            override fun onFailure(call: Call<MutableList<User>>, t: Throwable) {
-                Log.e("error", t.localizedMessage)
-            }
-
-            override fun onResponse(
-                call: Call<MutableList<User>>,
-                response: Response<MutableList<User>>
-            ) {
-                val usersResponse = response.body()
-                listUsers.clear()
-                usersResponse?.let{ listUsers.addAll(it)}
-            }
-        })
     }
 
     private fun isNetworkAvailable(): Boolean{

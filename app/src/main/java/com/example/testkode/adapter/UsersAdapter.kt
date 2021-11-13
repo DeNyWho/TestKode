@@ -8,7 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testkode.R
-import com.example.testkode.response.User
+import com.example.testkode.models.User
+import com.example.testkode.models.UserList
+import com.example.testkode.viewModel.MainViewModel
 import com.squareup.picasso.Picasso
 
 class UsersAdapter(private val context: Context, private var list: MutableList<User>) : RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
