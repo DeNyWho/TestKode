@@ -10,45 +10,44 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.testkode.R
 import com.example.testkode.models.User
 import com.example.testkode.models.UserList
-import com.example.testkode.viewModel.MainViewModel
 import com.squareup.picasso.Picasso
 
-class UsersAdapter(private val context: Context, private var list: MutableList<User>) : RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
+class UsersAdapter(private var list: UserList) : RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
 
-    override fun getItemCount(): Int {
-        return list.size
+    var userList = list.items
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersAdapter.MyViewHolder {
+        val inflater = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        return MyViewHolder(inflater)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val user = list[position]
-        holder.name?.text = "${user.firstName} ${user.lastName}"
-        holder.department?.text = user.department
-        Picasso
-            .get()
-            .load(user.avatarUrl)
-            .into(holder.avatarUrl)
+    override fun getItemCount(): Int {
+        return userList.size
+    }
+
+    override fun onBindViewHolder(holder: UsersAdapter.MyViewHolder, position: Int) {
+        holder.bind(userList[position])
     }
 
     class MyViewHolder(var view: View) : RecyclerView.ViewHolder(view){
 
-        var name: TextView? = null
-        var userTag: TextView? = null
-        var avatarUrl: ImageView? = null
-        var department: TextView? = null
+          val department = view.findViewById<TextView>(R.id.department)
+          val  avatarUrl = view.findViewById<ImageView>(R.id.avatarUrl)
+          val  name = view.findViewById<TextView>(R.id.fullName)
+          val  userTag = view.findViewById<TextView>(R.id.userTag)
 
-        init {
-            department = view.findViewById(R.id.department)
-            avatarUrl = view.findViewById(R.id.avatarUrl)
-            name = view.findViewById(R.id.fullName)
-            userTag = view.findViewById(R.id.userTag)
+        fun bind(user: User){
+            name.text = "${user.firstName} ${user.lastName}"
+            department.text = user.department
+            userTag.text = user.userTag
+            Picasso
+                .get()
+                .load(user.avatarUrl)
+                .into(avatarUrl)
+
         }
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val inflater = LayoutInflater.from(context)
-        val view: View = inflater.inflate(R.layout.user_row,parent,false)
-        return MyViewHolder(view)
-    }
 
 }

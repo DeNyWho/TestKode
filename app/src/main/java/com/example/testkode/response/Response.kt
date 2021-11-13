@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
 
-private const val BASE_URL = "https://stoplight.io/"
+private const val BASE_URL = "https://stoplight.io"
 
 interface SuccessfulResponse{
 
