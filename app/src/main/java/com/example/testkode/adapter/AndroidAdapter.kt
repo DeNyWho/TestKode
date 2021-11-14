@@ -36,7 +36,6 @@ class AndroidAdapter(private var list: UserList) : RecyclerView.Adapter<AndroidA
         val  userTag = view.findViewById<TextView>(R.id.userTag)
 
         fun bind(user: User) {
-            var something = 0
             name.text = "${user.firstName} ${user.lastName}"
             department.text = user.department
             userTag.text = user.userTag
@@ -44,7 +43,6 @@ class AndroidAdapter(private var list: UserList) : RecyclerView.Adapter<AndroidA
                 .get()
                 .load(user.avatarUrl)
                 .into(avatarUrl)
-            something++
         }
     }
 }

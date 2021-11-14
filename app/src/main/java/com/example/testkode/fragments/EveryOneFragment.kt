@@ -17,7 +17,6 @@ import com.example.testkode.viewModel.MainViewModel
 
 class EveryOneFragment() : Fragment() {
     lateinit var recyclerView: RecyclerView
-
     lateinit var viewModel: MainViewModel
     lateinit var recyclerAdapter: UsersAdapter
 
@@ -31,7 +30,6 @@ class EveryOneFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_every_one, container, false)
-
         recyclerView = view.findViewById(R.id.usersList)
 
         return view

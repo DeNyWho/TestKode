@@ -55,7 +55,8 @@
             android:gravity="center"
             android:text="al"
             android:textColor="#97979B"
-            android:textSize="17dp" />
+            android:textSize="17dp"
+            app:layout_constraintEnd_toStartOf="@id/fullName"/>
 
         <TextView
             android:id="@+id/department"
