@@ -10,11 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.testkode.adapter.ListAdapter
+import com.example.testkode.models.UserList
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 
-class MainFragment : Fragment() {
+class MainFragment() : Fragment() {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(

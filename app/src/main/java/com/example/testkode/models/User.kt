@@ -8,6 +8,6 @@ data class User(
     val id: String,
     val lastName: String,
     val phone: String,
-    val position: String,
+    var position: String,
     val userTag: String
 )

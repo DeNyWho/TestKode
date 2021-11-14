@@ -13,12 +13,13 @@ import retrofit2.Response
 
 class MainViewModel: ViewModel() {
 
-    var recyclerListData: MutableLiveData<UserList> = MutableLiveData()
+    var  recyclerListData: MutableLiveData<UserList> = MutableLiveData()
 
     fun getUserList(): MutableLiveData<UserList>
     {
         return recyclerListData
     }
+
     fun getUsersData(){
         val retroInstance = NetworkService.getRetroInstance().create(ServerApi::class.java)
         val call = retroInstance.getUsers()

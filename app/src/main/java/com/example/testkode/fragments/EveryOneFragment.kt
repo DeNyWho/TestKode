@@ -15,7 +15,7 @@ import com.example.testkode.models.UserList
 import com.example.testkode.viewModel.MainViewModel
 
 
-class EveryOneFragment : Fragment() {
+class EveryOneFragment() : Fragment() {
     lateinit var recyclerView: RecyclerView
 
     lateinit var viewModel: MainViewModel
