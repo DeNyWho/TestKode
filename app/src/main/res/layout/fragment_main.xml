@@ -6,19 +6,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainFragment">
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:queryHint="Введи имя, тег, почту..."
-        android:iconifiedByDefault="false"
-        android:searchIcon="@drawable/search"
-        android:layout_marginTop="12dp"
+    <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
         android:background="@drawable/background_search"
-        android:queryBackground="@android:color/transparent"
-        />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            app:queryHint="Введи имя, тег, почту..."
+            android:queryHint="Введи имя, тег, почту..."
+            android:gravity="center"
+            android:searchIcon="@drawable/search"
+            android:inputType="textNoSuggestions"
+            android:queryBackground="@android:color/transparent" />
+        <ImageButton
+            android:id="@+id/filter"
+            android:layout_gravity="center"
+            android:src="@drawable/filter"
+            android:layout_width="20dp"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            android:layout_height="32dp" />
+    </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/TabLayout"

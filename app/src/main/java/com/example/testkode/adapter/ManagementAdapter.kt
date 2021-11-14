@@ -1,11 +1,13 @@
 package com.example.testkode.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.testkode.DetailActivity
 import com.example.testkode.R
 import com.example.testkode.models.User
 import com.example.testkode.models.UserList
@@ -26,6 +28,21 @@ class ManagementAdapter(private var list: UserList) : RecyclerView.Adapter<Manag
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(userList[position])
+        holder.itemView.setOnClickListener {
+            val something = userList[position]
+
+            val context = holder.itemView.context
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra(DetailActivity.avatarUrl, something.avatarUrl)
+            intent.putExtra(DetailActivity.firstName, something.firstName)
+            intent.putExtra(DetailActivity.lastName, something.lastName)
+            intent.putExtra(DetailActivity.birthdayl, something.birthday)
+            intent.putExtra(DetailActivity.departmentl, something.department)
+            intent.putExtra(DetailActivity.phoneNum, something.phone)
+            intent.putExtra(DetailActivity.userTagl, something.userTag)
+            intent.putExtra(DetailActivity.position, something.position)
+            context.startActivity(intent)
+        }
     }
 
     class MyViewHolder(var view: View) : RecyclerView.ViewHolder(view){

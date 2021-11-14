@@ -3,7 +3,7 @@ package com.example.testkode.viewModel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.testkode.models.User
+import androidx.lifecycle.ViewModelProvider
 import com.example.testkode.models.UserList
 import com.example.testkode.retrofit.NetworkService
 import com.example.testkode.retrofit.ServerApi
@@ -19,6 +19,9 @@ class MainViewModel: ViewModel() {
     {
         return recyclerListData
     }
+    lateinit var list: MutableLiveData<UserList>
+    fun userList() {
+    }
 
     fun getUsersData(){
         val retroInstance = NetworkService.getRetroInstance().create(ServerApi::class.java)
@@ -31,6 +34,9 @@ class MainViewModel: ViewModel() {
             override fun onResponse(call: Call<UserList>, response: Response<UserList>) {
                 if (response.body() !=null){
                     recyclerListData.postValue(response.body())
+                    list = recyclerListData
+                    userList()
+
                 }else{
                     recyclerListData.postValue(null)
                     Log.d("TAG", response.raw().toString())
