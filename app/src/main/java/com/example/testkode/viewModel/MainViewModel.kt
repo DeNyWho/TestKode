@@ -19,9 +19,6 @@ class MainViewModel: ViewModel() {
     {
         return recyclerListData
     }
-    lateinit var list: MutableLiveData<UserList>
-    fun userList() {
-    }
 
     fun getUsersData(){
         val retroInstance = NetworkService.getRetroInstance().create(ServerApi::class.java)
@@ -34,8 +31,6 @@ class MainViewModel: ViewModel() {
             override fun onResponse(call: Call<UserList>, response: Response<UserList>) {
                 if (response.body() !=null){
                     recyclerListData.postValue(response.body())
-                    list = recyclerListData
-                    userList()
 
                 }else{
                     recyclerListData.postValue(null)

@@ -17,7 +17,7 @@ import com.example.testkode.viewModel.MainViewModel
 class AndroidFragment() : Fragment() {
     lateinit var recyclerView: RecyclerView
 
-    lateinit var viewModel: MainViewModel
+        lateinit var viewModel: MainViewModel
     lateinit var recyclerAdapter: AndroidAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

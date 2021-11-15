@@ -1,28 +1,24 @@
 package com.example.testkode
 
-import android.annotation.SuppressLint
+    import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
-import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
+    import androidx.lifecycle.ViewModelProvider
+    import androidx.viewpager2.widget.ViewPager2
 import com.example.testkode.adapter.ListAdapter
-import com.example.testkode.models.UserList
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.tabs.TabLayout
+    import com.example.testkode.viewModel.MainViewModel
+    import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.fragment_main.*
 
 
 class MainFragment() : Fragment() {
-
+    lateinit var viewModel: MainViewModel
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,7 +58,6 @@ class MainFragment() : Fragment() {
                 12 -> tab.text = "BackOffice"
             }
         }.attach()
-
 
         return view
     }
