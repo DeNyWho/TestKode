@@ -47,16 +47,16 @@ class EveryOneFragment() : Fragment() {
     }
 
     private fun initViewModel(){
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel = ViewModelProvider(requireParentFragment())[MainViewModel::class.java]
         viewModel.getUserList().observe(this, {
             if (it != null){
                 initRecyclerView(it)
+                viewModel.recyclerListData.value
             }else{
 //                setContentView(R.layout.error)
                 //Toast.makeText(this, "no result found...", Toast.LENGTH_LONG).show()
             }
         })
-        viewModel.getUsersData()
     }
 
 }

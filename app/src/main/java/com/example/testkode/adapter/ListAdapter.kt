@@ -2,13 +2,17 @@ package com.example.testkode.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.testkode.MainFragment
 import com.example.testkode.fragments.*
 
 
-class ListAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(fragmentManager, lifecycle) {
+class ListAdapter(
+    fragmentManager: FragmentManager,
+    fragmentActivity: MainFragment
+):
+    FragmentStateAdapter(fragmentManager, fragmentActivity.lifecycle)
+{
     override fun getItemCount(): Int {
         return 13
     }

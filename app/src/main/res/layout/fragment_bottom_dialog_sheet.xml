@@ -24,10 +24,12 @@
             android:layout_height="wrap_content">
 
             <RadioButton
+                android:id="@+id/filter_alpabet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <RadioButton
+                android:id="@+id/filter_birthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </RadioGroup>

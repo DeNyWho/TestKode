@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.testkode"
-        minSdk 27
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -34,6 +34,7 @@ android {
 }
 
 dependencies {
+
     // Anko Commons
     implementation "org.jetbrains.anko:anko-commons:0.10.5"
 

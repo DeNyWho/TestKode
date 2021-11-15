@@ -20,6 +20,8 @@ class MainViewModel: ViewModel() {
         return recyclerListData
     }
 
+
+    // Retrofit response
     fun getUsersData(){
         val retroInstance = NetworkService.getRetroInstance().create(ServerApi::class.java)
         val call = retroInstance.getUsers()

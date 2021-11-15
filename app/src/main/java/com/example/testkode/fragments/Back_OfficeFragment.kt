@@ -48,7 +48,7 @@ class Back_OfficeFragment() : Fragment() {
     }
 
     private fun initViewModel(){
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel = ViewModelProvider(requireParentFragment())[MainViewModel::class.java]
         viewModel.getUserList().observe(this, {
             if (it != null){
                 initRecyclerView(it)
@@ -57,6 +57,5 @@ class Back_OfficeFragment() : Fragment() {
                 //Toast.makeText(this, "no result found...", Toast.LENGTH_LONG).show()
             }
         })
-        viewModel.getUsersData()
     }
 }
