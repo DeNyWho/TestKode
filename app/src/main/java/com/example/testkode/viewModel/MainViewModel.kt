@@ -3,7 +3,6 @@ package com.example.testkode.viewModel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.example.testkode.models.UserList
 import com.example.testkode.retrofit.NetworkService
 import com.example.testkode.retrofit.ServerApi
@@ -16,6 +15,11 @@ class MainViewModel: ViewModel() {
     var  recyclerListData: MutableLiveData<UserList> = MutableLiveData()
 
     fun getUserList(): MutableLiveData<UserList>
+    {
+        return recyclerListData
+    }
+
+    fun filter(): MutableLiveData<UserList>
     {
         return recyclerListData
     }

@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +14,6 @@ import com.example.testkode.R
 import com.example.testkode.adapter.AnalyticsAdapter
 import com.example.testkode.models.UserList
 import com.example.testkode.viewModel.MainViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class AnalyticsFragment : Fragment() {
@@ -55,8 +54,6 @@ class AnalyticsFragment : Fragment() {
             if (it != null){
                 initRecyclerView(it)
             }else{
-
-                //Toast.makeText(this, "no result found...", Toast.LENGTH_LONG).show()
             }
         })
     }

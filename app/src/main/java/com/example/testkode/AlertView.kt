@@ -1,7 +1,6 @@
 package com.example.testkode
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
 import com.example.testkode.enums.AlertStyle
 
 class AlertView(private var title: String, private var style: AlertStyle) {

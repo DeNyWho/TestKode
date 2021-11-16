@@ -1,10 +1,11 @@
 package com.example.testkode.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +18,6 @@ import com.example.testkode.viewModel.MainViewModel
 
 class DesignersFragment() : Fragment() {
     lateinit var recyclerView: RecyclerView
-
     lateinit var viewModel: MainViewModel
     lateinit var recyclerAdapter: DesignersAdapter
 
@@ -54,8 +54,6 @@ class DesignersFragment() : Fragment() {
             if (it != null){
                 initRecyclerView(it)
             }else{
-//                setContentView(R.layout.error)
-                //Toast.makeText(this, "no result found...", Toast.LENGTH_LONG).show()
             }
         })
     }

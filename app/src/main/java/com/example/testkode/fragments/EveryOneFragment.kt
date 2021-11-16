@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -30,7 +31,9 @@ class EveryOneFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_every_one, container, false)
+
         recyclerView = view.findViewById(R.id.usersList)
+
 
         return view
     }
@@ -53,8 +56,6 @@ class EveryOneFragment() : Fragment() {
                 initRecyclerView(it)
                 viewModel.recyclerListData.value
             }else{
-//                setContentView(R.layout.error)
-                //Toast.makeText(this, "no result found...", Toast.LENGTH_LONG).show()
             }
         })
     }

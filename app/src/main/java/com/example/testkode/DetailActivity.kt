@@ -1,21 +1,15 @@
 package com.example.testkode
 
 import android.annotation.SuppressLint
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.squareup.picasso.Picasso
-import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.activity_detail.*
-import java.time.LocalDate
-import java.time.Period
-import android.graphics.BitmapFactory
-
-import android.graphics.Bitmap
 import android.os.Build
+import android.os.Bundle
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.example.testkode.enums.AlertStyle
-import java.net.URL
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_detail.*
+import java.time.LocalDate
 import java.time.Month
 import java.util.*
 

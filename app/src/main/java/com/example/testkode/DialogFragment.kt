@@ -3,7 +3,6 @@ package com.example.testkode
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import com.example.testkode.enums.AlertActionStyle
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.action_layout_light.view.*
 import kotlinx.android.synthetic.main.alert_layout_light.view.*
-import java.util.ArrayList
+import java.util.*
 
 
 class DialogFragment(
