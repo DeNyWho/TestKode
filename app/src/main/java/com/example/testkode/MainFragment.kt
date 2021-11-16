@@ -12,7 +12,6 @@ package com.example.testkode
     import android.util.Log
     import android.view.*
     import android.widget.*
-    import androidx.appcompat.widget.SearchView
     import androidx.core.os.postDelayed
     import androidx.fragment.app.Fragment
     import androidx.lifecycle.MutableLiveData
@@ -21,10 +20,12 @@ package com.example.testkode
     import androidx.viewpager2.widget.ViewPager2
     import com.example.testkode.adapter.ListAdapter
     import com.example.testkode.models.User
-    import com.example.testkode.models.UserList
+    import com.example.testkode.utils.apiErrorSnackBar.ApiSnackBar
     import com.example.testkode.viewModel.MainViewModel
     import com.google.android.material.tabs.TabLayout
     import com.google.android.material.tabs.TabLayoutMediator
+    import com.example.testkode.utils.customSnackBar.CustomSnackBar
+    import com.example.testkode.utils.loadingSnackBar.LoadingSnackBar
 
 
 class MainFragment() : Fragment() {
@@ -44,26 +45,47 @@ class MainFragment() : Fragment() {
         var view = inflater.inflate(R.layout.fragment_main, container, false)
         val filter = view.findViewById<ImageButton>(R.id.filter)
         val refresh = view.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
-        val frame = view.findViewById<FrameLayout>(R.id.frame)
         refresh.setColorSchemeColors(Color.DKGRAY, Color.GRAY, Color.GRAY)
         val handler = Handler()
         refresh.setOnRefreshListener {
-            if(isOnline(requireContext())) frame.visibility = View.GONE
-            if (!isOnline(requireContext())) frame.visibility = View.VISIBLE
-            handler.postDelayed(2000) {
+            if (!isOnline(requireContext())) {
+                    view?.let {
+                        CustomSnackBar
+                            .make(it)
+                            .show()
+                    }
+            }
+            view?.let {
+                LoadingSnackBar
+                    .make(it)
+                    .show()
+            }
+            handler.postDelayed(2500) {
                 refresh.isRefreshing = false
                 viewModel.getUsersData()
             }
         }
 
-        if (!isOnline(requireContext())) frame.visibility = View.VISIBLE
-        if(isOnline(requireContext())) frame.visibility = View.GONE
+        if (!isOnline(requireContext())) {
+            view?.let {
+                CustomSnackBar
+                    .make(it)
+                    .show()
+            }
+        }
 
         filter.setOnClickListener {
             showDialog()
         }
-
-        initViewModel()
+        view?.let {
+            LoadingSnackBar
+                .make(it)
+                .show()
+        }
+        handler.postDelayed(2500) {
+            refresh.isRefreshing = false
+            initViewModel()
+        }
 
         if (error) {
             view = inflater.inflate(R.layout.error, container, false)
@@ -197,7 +219,11 @@ class MainFragment() : Fragment() {
             if (it != null) {
 
             } else {
-                error = true
+                view?.let {
+                    ApiSnackBar
+                        .make(requireView())
+                        .show()
+                }
             }
         })
         viewModel.getUsersData()
