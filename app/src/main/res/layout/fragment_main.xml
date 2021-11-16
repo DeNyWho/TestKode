@@ -46,6 +46,24 @@
         app:tabSelectedTextColor="#050510"
         app:tabTextColor="#97979B"
         tools:ignore="SpeakableTextPresentCheck" />
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#F44336"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:textSize="13sp"
+            android:text="Не могу обновить данные.\nПроверьте соединение с интернетом."
+            android:textColor="@color/white"/>
+    </FrameLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="0.33dp"

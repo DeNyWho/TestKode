@@ -2,15 +2,16 @@ package com.example.testkode
 
     import android.annotation.SuppressLint
     import android.app.Dialog
+    import android.content.Context
     import android.graphics.Color
     import android.graphics.drawable.ColorDrawable
+    import android.net.ConnectivityManager
+    import android.net.NetworkCapabilities
     import android.os.Bundle
     import android.os.Handler
+    import android.util.Log
     import android.view.*
-    import android.widget.Button
-    import android.widget.ImageButton
-    import android.widget.ImageView
-    import android.widget.RadioButton
+    import android.widget.*
     import androidx.appcompat.widget.SearchView
     import androidx.core.os.postDelayed
     import androidx.fragment.app.Fragment
@@ -43,15 +44,20 @@ class MainFragment() : Fragment() {
         var view = inflater.inflate(R.layout.fragment_main, container, false)
         val filter = view.findViewById<ImageButton>(R.id.filter)
         val refresh = view.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
-
+        val frame = view.findViewById<FrameLayout>(R.id.frame)
         refresh.setColorSchemeColors(Color.DKGRAY, Color.GRAY, Color.GRAY)
         val handler = Handler()
         refresh.setOnRefreshListener {
+            if(isOnline(requireContext())) frame.visibility = View.GONE
+            if (!isOnline(requireContext())) frame.visibility = View.VISIBLE
             handler.postDelayed(2000) {
                 refresh.isRefreshing = false
                 viewModel.getUsersData()
             }
         }
+
+        if (!isOnline(requireContext())) frame.visibility = View.VISIBLE
+        if(isOnline(requireContext())) frame.visibility = View.GONE
 
         filter.setOnClickListener {
             showDialog()
@@ -59,10 +65,12 @@ class MainFragment() : Fragment() {
 
         initViewModel()
 
-        if (error){
+        if (error) {
             view = inflater.inflate(R.layout.error, container, false)
             val back = view.findViewById<Button>(R.id.back)
-            back.setOnClickListener { view = inflater.inflate(R.layout.fragment_analytics, container, false) }
+            back.setOnClickListener {
+                view = inflater.inflate(R.layout.fragment_analytics, container, false)
+            }
         }
 
         //SearchView
@@ -162,8 +170,8 @@ class MainFragment() : Fragment() {
         val adapter = ListAdapter(childFragmentManager, this)
         viewPager.adapter = adapter
 
-        TabLayoutMediator(tabLayout, viewPager){tab, position ->
-            when(position){
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            when (position) {
                 0 -> tab.text = "Все"
                 1 -> tab.text = "Designers"
                 2 -> tab.text = "Analysts"
@@ -179,17 +187,16 @@ class MainFragment() : Fragment() {
                 12 -> tab.text = "BackOffice"
             }
         }.attach()
-
         return view
     }
 
 
-    private fun initViewModel(){
+    private fun initViewModel() {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.getUserList().observe(viewLifecycleOwner, {
-            if (it != null){
+            if (it != null) {
 
-            }else{
+            } else {
                 error = true
             }
         })
@@ -235,4 +242,23 @@ class MainFragment() : Fragment() {
         dialog.window!!.setGravity(Gravity.BOTTOM)
     }
 
+    fun isOnline(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+        if (capabilities != null) {
+            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+                return true
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+                return true
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+                return true
+            }
+        }
+        return false
+    }
 }
