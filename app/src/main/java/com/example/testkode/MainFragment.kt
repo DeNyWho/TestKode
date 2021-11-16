@@ -5,15 +5,18 @@ package com.example.testkode
     import android.graphics.Color
     import android.graphics.drawable.ColorDrawable
     import android.os.Bundle
+    import android.os.Handler
     import android.view.*
     import android.widget.Button
     import android.widget.ImageButton
     import android.widget.ImageView
     import android.widget.RadioButton
     import androidx.appcompat.widget.SearchView
+    import androidx.core.os.postDelayed
     import androidx.fragment.app.Fragment
     import androidx.lifecycle.MutableLiveData
     import androidx.lifecycle.ViewModelProvider
+    import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     import androidx.viewpager2.widget.ViewPager2
     import com.example.testkode.adapter.ListAdapter
     import com.example.testkode.models.User
@@ -39,6 +42,16 @@ class MainFragment() : Fragment() {
     ): View? {
         var view = inflater.inflate(R.layout.fragment_main, container, false)
         val filter = view.findViewById<ImageButton>(R.id.filter)
+        val refresh = view.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
+
+        refresh.setColorSchemeColors(Color.DKGRAY, Color.GRAY, Color.GRAY)
+        val handler = Handler()
+        refresh.setOnRefreshListener {
+            handler.postDelayed(2000) {
+                refresh.isRefreshing = false
+                viewModel.getUsersData()
+            }
+        }
 
         filter.setOnClickListener {
             showDialog()

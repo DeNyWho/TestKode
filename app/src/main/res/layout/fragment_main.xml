@@ -51,11 +51,16 @@
         android:layout_height="0.33dp"
         android:layout_marginTop="111dp"
         android:background="#C3C3C6"/>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/ViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="127dp"/>
+        android:layout_height="match_parent"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </FrameLayout>
