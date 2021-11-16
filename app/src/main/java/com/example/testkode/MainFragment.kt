@@ -27,7 +27,7 @@ class MainFragment() : Fragment() {
 
     private var searchUserList: ArrayList<User> = arrayListOf()
     lateinit var viewModel: MainViewModel
-    private var allUsers: ArrayList<User> = arrayListOf()
+    private var allUserList: ArrayList<User> = arrayListOf()
     private var searchLiveData: MutableLiveData<List<User>> = MutableLiveData()
     var error = false
 //    private lateinit var users: UserList
@@ -53,6 +53,55 @@ class MainFragment() : Fragment() {
         }
 
         //SearchView
+
+//        val searchView = view.findViewById<SearchView>(R.id.search_view)
+//
+//        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+//
+//            var temp = viewModel.recyclerListData.value
+//
+//            override fun onQueryTextChange(p0: String?): Boolean {
+//                viewModel.recyclerListData.postValue(temp)
+//                return false
+//            }
+//
+//            override fun onQueryTextSubmit(newText: String?): Boolean {
+//                searchUserList.clear()
+//                if (newText != null) {
+//                    if(newText.isNotEmpty()){
+//                        allUserList.forEach {
+//                            if(it.firstName.contains(newText, ignoreCase = true ) || it.department.contains(newText, ignoreCase = true)|| it.userTag.contains(newText, ignoreCase = true) || it.lastName.contains(newText, ignoreCase = true)){
+//                                searchUserList.add(it)
+//                                val something = viewModel.recyclerListData.value
+//                                val _temp = searchUserList.toList()
+//                                if(something != null){
+//                                    something.items = _temp
+//                                }
+//
+//                                viewModel.recyclerListData.apply {
+//                                    this.value = something
+//                                }
+//                            }
+//                        }
+//
+//                    } else {
+//                        searchUserList.clear()
+//                        searchUserList.addAll(allUserList)
+//                        val _temp = allUserList.toList()
+//                        val something = viewModel.recyclerListData.value
+//                        if(something != null){
+//                            something.items = _temp
+//                        }
+//
+//                        viewModel.recyclerListData.apply{
+//                            this.value = something
+//                        }
+//                    }
+//
+//                }
+//                return false
+//            }
+//        })
 //        val searchView = view.findViewById<SearchView>(R.id.search_view)
 //
 //        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

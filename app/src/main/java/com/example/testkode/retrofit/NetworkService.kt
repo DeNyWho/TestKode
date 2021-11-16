@@ -3,7 +3,7 @@ package com.example.testkode.retrofit
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val baseUrl = "https://stoplight.io/mocks/kode-education/trainee-test/25143926/"
+    private const val baseUrl = "https://stoplight.io/mocks/kode-education/trainee-test/25143926/"
 class NetworkService{
 
     companion object {
