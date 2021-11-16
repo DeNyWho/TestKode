@@ -25,6 +25,14 @@ package com.example.testkode
     import com.example.testkode.viewModel.MainViewModel
     import com.google.android.material.tabs.TabLayout
     import com.google.android.material.tabs.TabLayoutMediator
+import android.view.WindowManager
+import androidx.core.content.ContextCompat
+
+
+
+
+
+
 
 
 class MainFragment() : Fragment() {
@@ -48,16 +56,46 @@ class MainFragment() : Fragment() {
         refresh.setColorSchemeColors(Color.DKGRAY, Color.GRAY, Color.GRAY)
         val handler = Handler()
         refresh.setOnRefreshListener {
-            if(isOnline(requireContext())) frame.visibility = View.GONE
-            if (!isOnline(requireContext())) frame.visibility = View.VISIBLE
+            if(isOnline(requireContext())){
+                val window = requireActivity().window
+                window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.my_statusbar_color_normal)
+                window.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.black)
+
+                frame.visibility = View.GONE
+            }
+            if (!isOnline(requireContext())) {
+                val window = requireActivity().window
+                window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.my_statusbar_color)
+
+                frame.visibility = View.VISIBLE
+            }
             handler.postDelayed(2000) {
                 refresh.isRefreshing = false
                 viewModel.getUsersData()
             }
         }
 
-        if (!isOnline(requireContext())) frame.visibility = View.VISIBLE
-        if(isOnline(requireContext())) frame.visibility = View.GONE
+        if (!isOnline(requireContext())) {
+            val window = requireActivity().window
+            window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.my_statusbar_color)
+
+            frame.visibility = View.VISIBLE
+        }
+        if(isOnline(requireContext())) {
+            val window = requireActivity().window
+            window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.my_statusbar_color_normal)
+            window.statusBarColor = ContextCompat.getColor(requireActivity(), R.color.black)
+
+            frame.visibility = View.GONE
+        }
 
         filter.setOnClickListener {
             showDialog()
